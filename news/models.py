@@ -12,6 +12,9 @@ class PublishedManager(models.Manager):
 class Category(models.Model):
     name=models.CharField(max_length=250)
 
+    def __str__(self):
+        return self.name
+
 
 class News(models.Model):
 
@@ -32,9 +35,13 @@ class News(models.Model):
     objects=models.Manager() #default
     published=PublishedManager() #ozgartirilgan
 
+    def __str__(self):
+        return self.title
 
     class Meta:
         ordering = ["-publish_time"]
+
+
 
 
 class Comment(models.Model):
